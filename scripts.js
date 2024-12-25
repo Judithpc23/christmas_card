@@ -59,7 +59,7 @@ function showFinalMessage() {
       const photo = document.getElementsByClassName('photo')[index];
       const angle = (index / photos.length) * 2 * Math.PI;
       const x = 40 * Math.cos(angle) + 45; // Coordenadas x para formar círculo
-      const y = 40 * Math.sin(angle) + 45; // Coordenadas y para formar círculo
+      const y = 40 * Math.sin(angle) + 40; // Coordenadas y para formar círculo
 
       photo.style.left = `${x}vw`;
       photo.style.top = `${y}vh`;
