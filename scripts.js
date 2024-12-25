@@ -54,27 +54,30 @@ photos.forEach((src, index) => {
 // Mostrar el mensaje final después de cargar y formar la esfera
 function showFinalMessage() {
   setTimeout(() => {
-    // Cambiar la posición de las fotos para formar una esfera
-    photos.forEach((src, index) => {
-      const photo = document.getElementsByClassName('photo')[index];
-      const angle = (index / photos.length) * 2 * Math.PI;
-  
-      // Cambia el centro a 50% del ancho y alto del contenedor
-      const centerX = 40; // Centro horizontal (en vw)
-      const centerY = 45; // Centro vertical (en vh)
-      const radius = 35; // Radio de la esfera, ajusta este valor según lo necesites
-  
-      const x = radius * Math.cos(angle) + centerX;
-      const y = radius * Math.sin(angle) + centerY;
-  
-      photo.style.left = `${x}vw`;
-      photo.style.top = `${y}vh`;
-      photo.style.transition = 'left 2s, top 2s'; // Transición suave para el movimiento
-      photo.style.animation = 'none';
-  });
-
-    // Mostrar el mensaje
+    // Mostrar el mensaje final
     finalMessage.classList.remove('hidden');
     finalMessage.style.opacity = 1;
-  }, 5000); // Tiempo adicional para que las fotos lleguen a sus posiciones
+
+    // Cambiar las fotos a posiciones aleatorias (sin rotación)
+    setInterval(() => {
+      const container = document.getElementById('container');
+      const containerWidth = container.offsetWidth;  // Ancho del contenedor
+      const containerHeight = container.offsetHeight;  // Alto del contenedor
+
+      photos.forEach((src, index) => {
+        const photo = document.getElementsByClassName('photo')[index];
+
+        // Generar posiciones aleatorias dentro del contenedor
+        const randomX = Math.floor(Math.random() * (containerWidth - 100));  // Ancho aleatorio
+        const randomY = Math.floor(Math.random() * (containerHeight - 100));  // Alto aleatorio
+
+        // Aplicar las posiciones aleatorias sin transformaciones adicionales
+        photo.style.left = `${randomX}px`;
+        photo.style.top = `${randomY}px`;
+        photo.style.opacity = 1; // Asegurarse de que las fotos sean visibles
+        photo.style.transition = 'left 2s, top 2s'; // Transición suave para el movimiento
+        photo.style.animation = 'none';
+      });
+    }, 4000); // Movimiento aleatorio de las fotos cada 3 segundos
+  }, 5000); // Mostrar mensaje después de 5 segundos
 }
