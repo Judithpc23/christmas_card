@@ -10,7 +10,6 @@
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
   
   body {
@@ -25,7 +24,7 @@
   
   #container {
     position: absolute;
-    width: 100%;
+    width: 90%;
     height: 100%;
   }
   
@@ -87,17 +86,17 @@
   }
   
   /* Media Queries para pantallas pequeñas */
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
+    #container {
+        width: 100%;
+    }
+
     #final-message h1 {
-      font-size: 1.5rem;
+        font-size: 1.75rem;
     }
-  
-    #final-message p {
-      font-size: 1rem;
-    }
-  
+
     .photo {
-      width: 25vw;
-      height: 25vw;
+        width: 20vw;
+        height: 20vw;
     }
-  }
+}

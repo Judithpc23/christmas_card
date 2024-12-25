@@ -58,15 +58,20 @@ function showFinalMessage() {
     photos.forEach((src, index) => {
       const photo = document.getElementsByClassName('photo')[index];
       const angle = (index / photos.length) * 2 * Math.PI;
-      const x = 40 * Math.cos(angle) + 45; // Coordenadas x para formar círculo
-      const y = 40 * Math.sin(angle) + 40; // Coordenadas y para formar círculo
-
+  
+      // Cambia el centro a 50% del ancho y alto del contenedor
+      const centerX = 40; // Centro horizontal (en vw)
+      const centerY = 45; // Centro vertical (en vh)
+      const radius = 35; // Radio de la esfera, ajusta este valor según lo necesites
+  
+      const x = radius * Math.cos(angle) + centerX;
+      const y = radius * Math.sin(angle) + centerY;
+  
       photo.style.left = `${x}vw`;
       photo.style.top = `${y}vh`;
       photo.style.transition = 'left 2s, top 2s'; // Transición suave para el movimiento
-
       photo.style.animation = 'none';
-    });
+  });
 
     // Mostrar el mensaje
     finalMessage.classList.remove('hidden');
